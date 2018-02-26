@@ -1,0 +1,18 @@
+
+{
+  "apps": [
+    {
+      "name": "mfile-web",
+      "script": "app.js",
+      "args": [],
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "error_file": "mfile-web-err.log",
+      "out_file": "mfile-web-out.log",
+      "node_args": "",
+      "cwd": ".",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
