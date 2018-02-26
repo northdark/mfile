@@ -36,8 +36,8 @@ const upload = async function (ctx) {
                     // 解析请求文件事件
                     busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
                         let fileName = formData['remotePath'];
-                        let localPath = formData['localPath'];
                         if (!fileName) {
+                            let localPath = formData['localPath'];
                             let localPathRes = path.parse(localPath);
                             fileName = localPathRes.base || Math.random().toString(16).substr(2) + '.' + getSuffixName(fieldname)
                         }

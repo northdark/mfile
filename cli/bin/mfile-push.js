@@ -51,11 +51,11 @@ runTask();
 function runTask() {
     let formData = {
         localPath: localPath,
-        file: fs.createReadStream(localPath),
     };
     if (remotePath) {
         formData.remotePath = remotePath;
     }
+    formData.file = fs.createReadStream(localPath);
     //http://10.32.171.169:8410/upload
     //http://10.32.171.169:8410/upload
     request.post(utils.getAuthInfo('http://10.32.171.169:8410/upload', formData),
