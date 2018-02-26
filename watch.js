@@ -6,21 +6,7 @@ const chokidar = require('chokidar');
 var process = require('child_process');
 const config = require('./lib/config');
 const watcher = chokidar.watch(config.getLocalPath(), {
-    persistent: true,
-    ignoreInitial: false,
-    followSymlinks: true,
-    disableGlobbing: false,
-    usePolling: true,
-    interval: 100,
-    binaryInterval: 300,
-    alwaysStat: false,
-    depth: 99,
-    awaitWriteFinish: {
-        stabilityThreshold: 2000,
-        pollInterval: 100
-    },
-    ignorePermissionErrors: false,
-    atomic: true
+    persistent: true
 });
 watcher.on('change', (path, stats) => {
     let path = config.getLocalPath();
