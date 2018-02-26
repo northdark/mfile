@@ -26,6 +26,7 @@ watcher.on('change', (path, stats) => {
     let path = config.getLocalPath();
     path = path.split('/');
     path = path.slice(0, path.length - 1).join('/');
+    console.log('sync file to ', path)
     if (stats) {
         process.exec(`rsync -av ${config.getLocalPath()} -e 'ssh -p ${config.getSSHPort()}' --progress ${config.getRsyncUser()}@${config.getRsyncIp()}:${path}`, function (error, stdout, stderr) {
             if (error !== null) {
