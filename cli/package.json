@@ -9,6 +9,7 @@
   "bin": {
     "mfile": "bin/mfile.js",
     "mfile-push": "bin/mfile-push.js",
+    "mfile-list": "bin/mfile-list.js",
     "mfile-token": "bin/mfile-token.js"
   },
   "dependencies": {

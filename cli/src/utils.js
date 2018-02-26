@@ -46,7 +46,7 @@ module.exports = {
         }
     },
 
-    getAuthInfo(url, formData, otherHeader) {
+    getAuthInfo(url, options, otherHeader) {
         let config = {
             url: url,
             method: 'post',
@@ -54,10 +54,11 @@ module.exports = {
                 'User-Agent': 'mfile-cli'
             },
             timeout: 10000,
-            auth: {},
-            formData
+            auth: {}
         };
-
+        if (options) {
+            config = Object.assign(config,options);
+        }
         let binPath = this.mfileBinPath();
         let tokenPath = path.normalize(path.join(binPath, '../../', 'lib/node_modules/mfile-cli/src/token.json'));
 

@@ -9,9 +9,11 @@ const http = require('http');
 
 const config = require('./lib/config');
 const controller = require('./router');
+const baseAuth = require('./middleware/base-auth');
 
 const app = new koa();
 app.use(bodyParser());
+app.use(baseAuth([], []));
 controller.register(app);
 app.use(logger());
 const port = config.getPort();

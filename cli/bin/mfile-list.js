@@ -15,13 +15,13 @@ let utils = require('../src/utils');
  */
 
 program
-    .usage('<file-path> [remote-file-path]');
+    .usage('[remote-file-path]');
 
 program.on('--help', function () {
     log.tips('  Examples:');
     log.tips();
-    log.tips(chalk.gray('    # push a file to remote server'));
-    log.tips('    $ mfile push ./test.js test/dir/test.js');
+    log.tips(chalk.gray('    # List the remote directory and file'));
+    log.tips('    $ mfile list ./ ');
     log.tips();
 });
 
@@ -43,27 +43,22 @@ help();
 log.tips();
 process.on('exit', () => log.tips());
 
-let localPath = program.args[0];
-let remotePath = program.args[1];
+let remotePath = program.args[0];
 
 runTask();
 
 function runTask() {
-    let formData = {
-        localPath: localPath,
-    };
-    if (remotePath) {
-        formData.remotePath = remotePath;
-    }
-    formData.file = fs.createReadStream(localPath);
     //http://10.32.171.169:8410/upload
     //http://127.0.0.1:8410/upload
-    request.post(utils.getAuthInfo('http://10.32.171.169:8410/upload', {formData}),
+    request.post(utils.getAuthInfo('http://127.0.0.1:8410/list', {
+            body: JSON.stringify({path: remotePath}, null, 0)
+        }, {
+            'Content-type': 'application/json'
+        }),
         function optionalCallback(err, httpResponse, body) {
             if (err) {
                 return console.error('upload failed:', err);
             }
-            console.log('Upload successful!');
             console.log(body);
         }
     );
