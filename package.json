@@ -1,0 +1,30 @@
+{
+  "name": "mfile",
+  "version": "1.0.0",
+  "description": "文件管理",
+  "main": "index.js",
+  "scripts": {
+    "i": "SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registry=https://registry.npm.taobao.org",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northdark/mfile.git"
+  },
+  "author": "ximing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northdark/mfile/issues"
+  },
+  "homepage": "https://github.com/northdark/mfile#readme",
+  "dependencies": {
+    "bufferhelper": "^0.2.1",
+    "busboy": "^0.2.14",
+    "fs-extra": "^5.0.0",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compress": "^2.0.0",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.4.0"
+  }
+}
