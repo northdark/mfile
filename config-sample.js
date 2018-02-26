@@ -6,7 +6,9 @@ module.exports = {
     'development': {
         localPath: '/Users/yeanzhi/project/mygithub/mfile/static',
         port: 8410,
-        auth: ['dxfe:8D58CE4D648ED49746480F0A41455D19']
+        auth: [],
+        rsyncIp: '',
+        rsyncUser: '',
     },
     'production': {
         localPath: '',
