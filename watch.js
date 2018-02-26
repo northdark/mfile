@@ -24,7 +24,7 @@ const watcher = chokidar.watch(config.getLocalPath(), {
 });
 watcher.on('change', (path, stats) => {
     if (stats) {
-        process.exec(`rsync -av ${config.getLocalPath()} --progress ${config.getRsyncUser()}@${config.getRsyncIp()}:${config.getLocalPath()}`, function (error, stdout, stderr) {
+        process.exec(`rsync -av ${config.getLocalPath()} -e 'ssh -p ${config.getSSHPort()}' --progress ${config.getRsyncUser()}@${config.getRsyncIp()}:${config.getLocalPath()}`, function (error, stdout, stderr) {
             if (error !== null) {
                 console.log('exec error: ' + error);
             }

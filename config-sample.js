@@ -9,6 +9,7 @@ module.exports = {
         auth: [],
         rsyncIp: '',
         rsyncUser: '',
+        sshPort: 22
     },
     'production': {
         localPath: '',
