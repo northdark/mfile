@@ -36,8 +36,10 @@ const upload = async function (ctx) {
                     // 解析请求文件事件
                     busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
                         let fileName = formData['remotePath'];
+                        let localPath = formData['localPath'];
                         if (!fileName) {
-                            fileName = filename || Math.random().toString(16).substr(2) + '.' + getSuffixName(filename)
+                            let localPathRes = path.parse(localPath);
+                            fileName = localPathRes.base || Math.random().toString(16).substr(2) + '.' + getSuffixName(fieldname)
                         }
                         let saveTo = path.join(filePath, auth.split(':')[0], fileName);
                         let pathRes = path.parse(saveTo);

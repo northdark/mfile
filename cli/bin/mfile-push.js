@@ -44,16 +44,21 @@ log.tips();
 process.on('exit', () => log.tips());
 
 let localPath = program.args[0];
-let remotePath = program.args[1] || './';
+let remotePath = program.args[1];
 
 runTask();
 
 function runTask() {
-    var formData = {
-        remotePath: remotePath,
+    let formData = {
+        localPath: localPath,
         file: fs.createReadStream(localPath),
     };
-    request.post(utils.getAuthInfo('http://10.32.171.169:8410/upload', formData),
+    if (remotePath) {
+        formData.remotePath = remotePath;
+    }
+    //http://10.32.171.169:8410/upload
+    //http://10.32.171.169:8410/upload
+    request.post(utils.getAuthInfo('http://127.0.0.1:8410/upload', formData),
         function optionalCallback(err, httpResponse, body) {
             if (err) {
                 return console.error('upload failed:', err);
