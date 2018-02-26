@@ -9,12 +9,12 @@ const watcher = chokidar.watch(config.getLocalPath(), {
     persistent: true
 });
 watcher.on('change', (path, stats) => {
-    let path = config.getLocalPath();
-    path = path.split('/');
-    path = path.slice(0, path.length - 1).join('/');
-    console.log('sync file to ', path)
+    let remotePath = config.getLocalPath();
+    remotePath = remotePath.split('/');
+    remotePath = remotePath.slice(0, path.length - 1).join('/');
+    console.log('sync file to ', path, remotePath)
     if (stats) {
-        process.exec(`rsync -av ${config.getLocalPath()} -e 'ssh -p ${config.getSSHPort()}' --progress ${config.getRsyncUser()}@${config.getRsyncIp()}:${path}`, function (error, stdout, stderr) {
+        process.exec(`rsync -av ${config.getLocalPath()} -e 'ssh -p ${config.getSSHPort()}' --progress ${config.getRsyncUser()}@${config.getRsyncIp()}:${remotePath}`, function (error, stdout, stderr) {
             if (error !== null) {
                 console.log('exec error: ' + error);
             }
