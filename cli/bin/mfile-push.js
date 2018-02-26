@@ -53,12 +53,13 @@ function runTask() {
         remotePath: remotePath,
         file: fs.createReadStream(localPath),
     };
-    request.post(utils.getAuthInfo('http://10.32.171.169:8410/upload',formData),
+    request.post(utils.getAuthInfo('http://10.32.171.169:8410/upload', formData),
         function optionalCallback(err, httpResponse, body) {
             if (err) {
                 return console.error('upload failed:', err);
             }
-            console.log('Upload successful!  Server responded with:', body);
+            console.log('Upload successful!');
+            console.log(body);
         }
     );
 }
