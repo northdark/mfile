@@ -48,7 +48,7 @@ const upload = async function (ctx) {
                         file.on('end', function () {
                             result.success = true;
                             result.message = '文件上传成功';
-
+                            result.url = `https://s4.meituan.net/xm/mfile${saveTo}`;
                             console.log('文件上传成功！');
                             resolve(result)
                         })
