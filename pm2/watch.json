@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "name": "mfile-watch",
+      "script": "watch.js",
+      "args": [],
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "error_file": "mfile-watch-err.log",
+      "out_file": "mfile-watch-out.log",
+      "node_args": "",
+      "cwd": ".",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
