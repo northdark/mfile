@@ -50,7 +50,7 @@ runTask();
 function runTask() {
     //http://10.32.171.169:8410/upload
     //http://127.0.0.1:8410/upload
-    request.post(utils.getAuthInfo('http://127.0.0.1:8410/list', {
+    request.post(utils.getAuthInfo('http://10.32.171.169:8410/list', {
             body: JSON.stringify({path: remotePath}, null, 0)
         }, {
             'Content-type': 'application/json'
